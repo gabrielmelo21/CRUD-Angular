@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "nome":  "Toyota Supra",
+    "preco": 25.00,
+    "emEstoque": true,
+    "imgUrl": ""
+  },
+  {
+    "id": 2,
+    "nome":  "Toyota Supra 2",
+    "preco": 25.00,
+    "emEstoque": true,
+    "imgUrl": ""
+  }
+]

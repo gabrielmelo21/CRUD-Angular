@@ -1,0 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-toolbar{
+  background: black;
+}
+/* styles.css ou estilo específico do componente */
+
+/* Estiliza o container do mat-toolbar para posicionar na parte inferior */
+.bottom-toolbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 70px; /* Altura desejada para a barra de menu */
+  background-color: #000; /* Cor de fundo da barra de menu */
+  /* Adicione outros estilos desejados */
+}
+
+/* Estiliza os botões dentro do mat-toolbar */
+.mat-toolbar-button {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px; /* Ajuste o tamanho do texto conforme necessário */
+  cursor: pointer;
+  position: relative;
+  transition: color 0.8s;
+}
+
+/* Estiliza o ícone do botão */
+.mat-toolbar-button mat-icon {
+  font-size: 28px; /* Ajuste o tamanho do ícone conforme necessário */
+  margin-bottom: 4px; /* Adicione espaço abaixo do ícone */
+  transition: color 0.2s;
+}
+
+/* Estiliza o texto do botão */
+.mat-toolbar-button span {
+  font-size: 14px; /* Ajuste o tamanho do texto conforme necessário */
+  /* Adicione outros estilos desejados */
+}
+
+/* Estiliza a linha embaixo do botão selecionado */
+.mat-toolbar-button.active::after {
+  content: '';
+  position: absolute;
+  top: -10px; /* Posição da barra */
+  left: 0;
+  width: 100%; /* Largura da barra (3 botões) */
+  height: 5px; /* Altura da linha */
+  background-color: #1976d2; /* Cor da linha */
+  transform: translateX(0%);
+  transition: transform 0.9s;
+  border-radius: 10px;
+}
+
+/* Estiliza a cor do ícone e do texto do botão ativo */
+.mat-toolbar-button.active mat-icon,
+.mat-toolbar-button.active span {
+  color: #1976d2; /* Cor dos ícones e texto do botão ativo */
+}
+
+

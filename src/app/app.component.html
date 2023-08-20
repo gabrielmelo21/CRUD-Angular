@@ -1,0 +1,24 @@
+<style>
+
+</style>
+<mat-toolbar>
+  <span>My Application</span>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
+
+
+<mat-toolbar class="bottom-toolbar">
+  <div routerLink="" class="mat-toolbar-button" (click)="selectedTab = 'home'" [class.active]="selectedTab === 'home'">
+    <mat-icon>home</mat-icon>
+    <span>Home</span>
+  </div>
+  <div routerLink="/page" class="mat-toolbar-button" (click)="selectedTab = 'explore'" [class.active]="selectedTab === 'explore'">
+    <mat-icon>explore</mat-icon>
+    <span>Explore</span>
+  </div>
+  <div routerLink="/chatGPT" class="mat-toolbar-button" (click)="selectedTab = 'settings'" [class.active]="selectedTab === 'settings'">
+    <mat-icon>explore</mat-icon>
+    <span>ChatGpt</span>
+  </div>
+</mat-toolbar>

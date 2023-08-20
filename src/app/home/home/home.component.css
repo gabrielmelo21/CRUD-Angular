@@ -1,0 +1,34 @@
+.demo-table {
+  width: 100%;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+}
+
+.loading-spinner{
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin:10px;
+  padding: 25px;
+  background: rgba(0,0,0,0.15);
+
+}
+.aling-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin:10px;
+  padding: 25px;
+}
