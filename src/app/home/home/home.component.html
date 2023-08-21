@@ -26,7 +26,7 @@
   <!-- Name Column -->
   <ng-container matColumnDef="categoria">
     <th mat-header-cell *matHeaderCellDef> Categoria </th>
-    <td mat-cell *matCellDef="let element"> {{element.categoria}} </td>
+    <td mat-cell *matCellDef="let element" > {{element.categoria}} </td>
   </ng-container>
 
   <ng-container matColumnDef="dificuldade">
@@ -34,14 +34,37 @@
     <td mat-cell *matCellDef="let element"> {{element.dificuldade}} </td>
   </ng-container>
 
+  <ng-container matColumnDef="_id">
+    <th mat-header-cell *matHeaderCellDef> </th>
+    <td mat-cell *matCellDef="let element">
+
+      <button  mat-raised-button color="primary" (click)="atualizar(element._id, categoria2, nome2, dificuldade)">
+        Atualizar
+      </button>
+
+      <button  mat-raised-button color="danger" (click)="remover(element._id)">
+        Deletar
+      </button>
+
+  </td>
+  </ng-container>
+
+
+
+
+
+
+
+
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr  mat-row *matRowDef="let row; columns: displayedColumns;" (click)="clickCel(row)"></tr>
 </table>
     </div>
 
 
   </mat-card-content>
+
   <ng-template #loading>
     <div class="loading-spinner">
       <mat-spinner></mat-spinner>
@@ -58,17 +81,17 @@
 <div style="display: flex;justify-items: center">
 <mat-form-field  >
   <mat-label>Categoria</mat-label>
-  <input matInput placeholder="Categoria do Curso" [(ngModel)]="categoria2" style="width: 100%; ">
+  <input matInput [(ngModel)]="categoria2" style="width: 100%; ">
 </mat-form-field>
 
 <mat-form-field  >
   <mat-label>Nome</mat-label>
-<input matInput placeholder="Nome do Curso" [(ngModel)]="nome2" style="width: 100%; ">
+<input matInput   [(ngModel)]="nome2" style="width: 100%; ">
 </mat-form-field>
 
 <mat-form-field  >
   <mat-label>Dificuldade</mat-label>
-<input matInput placeholder="Dificuldade do curso" [(ngModel)]="dificuldade" style="width: 100%;">
+<input matInput   [(ngModel)]="dificuldade" style="width: 100%;">
 </mat-form-field>
 </div>
 <br>
