@@ -6,9 +6,9 @@ import { HomeComponent } from './home/home.component';
 import { AppMaterialModule } from "../Shared/app-material/app-material.module";
 import { NewPageComponent } from './new-page/new-page.component';
 import { SharedModule } from "../Shared/shared.module";
-import {MatInputModule} from "@angular/material/input";
-import {FormsModule} from "@angular/forms";
-
+import { MatInputModule } from "@angular/material/input";
+import { FormsModule } from "@angular/forms";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -21,6 +21,7 @@ import {FormsModule} from "@angular/forms";
     SharedModule,
     MatInputModule,
     FormsModule,
+    MatSnackBarModule
 
   ]
 })

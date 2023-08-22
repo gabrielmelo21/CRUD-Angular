@@ -6,6 +6,8 @@ import {catchError, finalize, map, Observable, of} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
 import {ErrorDialogComponent} from "../../Shared/components/error-dialog/error-dialog.component";
 import {ChatGptService} from "../services/chat-gpt-service.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {ImgStorageService} from "../services/img-storage.service";
 
 @Component({
   selector: 'app-home',
@@ -27,11 +29,35 @@ export class HomeComponent implements OnInit{
   responseDates: string = "";
   observable$: Observable<Interface[]> = of([]);
 
+  public imageData: any; // Para armazenar os dados da imagem
 
 
-  constructor(public dialog: MatDialog, private  instanciaHomeServices: HomeServiceService) {
+
+  constructor(
+    public dialog: MatDialog,
+    private  instanciaHomeServices: HomeServiceService,
+    private _snackBar: MatSnackBar,
+    private  imgStorage: ImgStorageService
+  ) {
+
+    const cid = 'bafybeibkngycxulmqmqzaymwenwear2zpxmkaekl6nvzxs6ecs4l3tsyja'; // Substitua pelo CID da imagem que você deseja recuperar
+    this.retrieveImage(cid);
     this.loadList();
   }
+
+  retrieveImage(cid: string): void {
+    this.imgStorage.getImageDataByCID(cid).subscribe(
+      (data) => {
+        this.imageData = data;
+      },
+      (error) => {
+        console.error('Erro ao recuperar imagem:', error);
+      }
+    );
+  }
+
+
+
   loadList(): void {
     // @ts-ignore
     this.observable$ = this.instanciaHomeServices.minhaLista().pipe(catchError(err => {
@@ -52,7 +78,11 @@ export class HomeComponent implements OnInit{
 
 
 
-
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2 * 1000 // 2 segundos em milissegundos
+    });
+  }
 
 
 
@@ -75,11 +105,13 @@ public atualizar(id: string, categoria: string, nome: string, dificuldade: strin
       this.dadosSalvos = true;
       this.responseDates = JSON.stringify(response);
       this.loadList();
+      this.openSnackBar("Dados Atualizados com Sucesso.", "Fechar");
     },
     error => {
       // Aqui posso chamar outro dialog  para erro
       this.dadosSalvos = true;
       this.responseDates = JSON.stringify(error);
+      this.openSnackBar("Erro ao atualizar dados.", "Fechar");
 
     }
 
@@ -94,6 +126,7 @@ public remover(id: string): any{
       this.dadosSalvos = true;
       this.responseDates = JSON.stringify(response);
       this.loadList();
+      this.openSnackBar("Dado Removido com Sucesso", "Fechar");
     },
     error => {
       // Aqui posso chamar outro dialog  para erro
@@ -119,6 +152,7 @@ clickCel(row: string){
   this.nome2  = celObject.nome;
   this.dificuldade  = celObject.dificuldade;
 
+
 }
 
 
@@ -131,11 +165,15 @@ clickCel(row: string){
           this.dadosSalvos = true;
           this.responseDates = JSON.stringify(response);
           this.loadList();
+
+          this.openSnackBar("Dado adicionado com sucesso.", "Fechar");
         },
         error => {
           // Aqui posso chamar outro dialog  para erro
-          this.dadosSalvos = true;
-          this.responseDates = JSON.stringify(error);
+         // this.dadosSalvos = true;
+        // this.responseDates = JSON.stringify(error);
+
+          this.openSnackBar("Erro ao adicionar dado.", "Fechar");
 
         }
       );

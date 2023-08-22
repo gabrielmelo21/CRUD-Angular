@@ -100,9 +100,13 @@
 <button  mat-raised-button color="primary" (click)="add_dados(categoria2, nome2, dificuldade)">
      Salvar no Banco
 </button>
-
+<!--
 <div *ngIf="dadosSalvos">
      <h1>Dados salvos com sucesso! </h1>
     <h2>{{responseDates}}</h2>
 </div>
 
+-->
+<div *ngIf="imageData">
+  <img [src]="imageData.url" alt="Imagem Recuperada">
+</div>
