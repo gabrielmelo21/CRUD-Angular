@@ -107,6 +107,36 @@
 </div>
 
 -->
-<div *ngIf="imageData">
-  <img [src]="imageData.url" alt="Imagem Recuperada">
+<br>
+
+<input type="file" (change)="onFileChange($event)" >
+<br>
+<img src="{{imgURL}}" width="70px" height="100px">
+
+
+<br>
+
+<!--
+img src="{{ user.photoUrl}}"><br>
+  {{user.name}} <br>
+  {{user.email}}
+  <br>
+<asl-google-signin-button *ngIf="loggedIn!='logado'">Entrar com o Google</asl-google-signin-button>
+
+-->
+
+
+<ng-template #jaLogado>
+  <h1>Ja esta logado, portando nao é pra aparecer o popup do google</h1>
+  <button (click)="deslogar()">Deslogar</button>
+</ng-template>
+
+
+<div *ngIf="loggedIn=='logado'">
+
+  <img src="{{ userImg }}"><br>
+  {{userName}} <br>
+  {{userEmail}} <br>
 </div>
+
+
